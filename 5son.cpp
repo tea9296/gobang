@@ -1,19 +1,23 @@
 
 #include<iostream> 
 #include<string> 
+#include <stdlib.h>
+#include <time.h>
+#include <windows.h>
 using namespace std; 
 short board[17][17]; 
 bool endtry; 
-
 void default_board();//初始化棋盤15x15 
 void show_board();//顯示棋盤15x15 
 void put_chess(short,short,short);//下棋+判斷有無棋子 
 bool winner(short i,short j,short whosturn);//勝負 win = 1 勝利 
 void multiplayer();//兩個玩家, 黑棋先下 
 int main()//※ 主程式 ※ 
-{ 	string bw,bw2,bw3;
-    cout<<"BLACK OR WHILE?\n";
-    getline(cin,bw);
+{ 	string bw2,bw3;
+    string who_first;
+    int COMI2,COMI3,COMJ2,COMJ3; //假後手電腦隨機選 
+	cout<<"假先手(1)或假後手(0)?\n";
+    getline(cin,who_first);
     string choose; 
     int I2,J2,I3,J3;
     do{ 
@@ -23,10 +27,15 @@ int main()//※ 主程式 ※
        show_board();
        
        
+       
+       //假先手 
+      if(who_first=="1"){
+	  
        //SECOND STEP
-       cout<<"換白子，choose between 7-9 and G-I\n";
+       
       
     step2:   
+		cout<<"換白子，choose between 7-9 and G-I\n";    
     	getline(cin,bw2);
        for(int n=0 ;n<bw2.length() ;n++){
        if(bw2[n]>='g' && bw2[n]<='i'){ 
@@ -51,18 +60,25 @@ int main()//※ 主程式 ※
        
        //THIRD STEP
        
-       cout<<"換黑子，choose between 6-10 and F-J\n";
+      
        
        
     step3:   
+    	cout<<"換黑子，choose between 6-10 and F-J\n";
 	   getline(cin,bw3);
+	   
        for(int n=0 ;n<bw3.length() ;n++){
        if(bw3[n]>='f' && bw3[n]<='j'){ 
            J3 = bw3[n] - 'a' + 1; 
         }else if(bw3[n]>='F' && bw3[n]<='J'){ 
            J3 = bw3[n] - 'A' + 1; 
-        }else if(bw3[n]>='6' && bw3[n]<='10'){ 
+        }else if(bw3[n]>='6' && bw3[n]<='9'){ 
            I3 = I3*10 + bw3[n] - '0'; 
+        }else if(n<bw3.length()-1 && bw3[n]=='1' && bw3[n+1]=='0'){
+		 	I3=I3*10 + bw3[n] - '0';
+	    }else if(n>0 && bw3[n-1]=='1' && bw3[n]=='0'){
+			I3=I3*10 + bw3[n] - '0';
+	   		
         }else if(bw3[n] == ' '){ 
            continue; 
         }else{ 
@@ -71,8 +87,33 @@ int main()//※ 主程式 ※
            goto step3; 
         } 
      } 
-       
-       put_chess(I3,J3,1);
+      put_chess(I3,J3,1);
+ }	  
+    
+	  
+	 char tem1,tem2;
+       //假後手 
+       if(who_first=="0")
+       {
+       	// 隨機取子 
+       	srand( (unsigned)time(NULL) );
+       	COMI2=rand() % 3 +7;
+       	Sleep(1000);
+       	COMJ2=rand() % 3 + 7;
+       	put_chess(COMI2,COMJ2,2);
+       	system("cls"); 
+       show_board();
+       	Sleep(3000);
+       	COMI3=rand() % 5 +6;
+       	COMJ3=rand() % 5 + 6;
+       	
+       	 put_chess(COMI3,COMJ3,1);
+       system("cls"); 
+       show_board();
+	   }  
+	  
+	  
+	  
        
        
        
@@ -318,7 +359,7 @@ winner_check_end:
 } 
 void multiplayer(){//兩個玩家, 黑棋先下 
      string keyin; 
-     short whosturn = 1,I,J; 
+     short whosturn = 2,I,J; 
      system("cls"); 
      show_board(); 
 nextstep: 
