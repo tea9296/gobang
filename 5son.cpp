@@ -49,7 +49,7 @@ class Gobang{
               void setboard(int ,int,int);     //改變棋子   
               void count(int com,int pla);                         //記數，棋子數   
               void count_total();                //算總分   
-
+			  bool generator(int com,int pla,int I,int J); 
  
 				 void getfive(int i,int j);             // 讀取數據，存入5*5 的棋盤中   
             
@@ -329,8 +329,46 @@ void Gobang::count(int com,int pla){
 
 
 
-
-
+//判斷該子附近有沒有子，是否要評估 
+bool Gobang::generator(int com,int pla,int I,int J){
+	
+	
+			if(board[I][J]==com||board[I][J]==pla)  return false;
+			else if(board[I][J+1]==com||board[I][J+1]==pla) return true;
+			else if(board[I][J+2]==com||board[I][J+2]==pla) return true;
+			else if(board[I][J-1]==com||board[I][J-1]==pla) return true;
+			else if(board[I][J-2]==com||board[I][J-2]==pla) return true;
+			
+			else if(board[I+1][J]==com||board[I+1][J]==pla) return true;
+			else if(board[I+1][J+1]==com||board[I+1][J+1]==pla) return true;
+			else if(board[I+1][J+2]==com||board[I+1][J+2]==pla) return true;
+			else if(board[I+1][J-1]==com||board[I+1][J-1]==pla) return true;
+			else if(board[I+1][J-2]==com||board[I+1][J-2]==pla) return true;
+			
+			else if(board[I+2][J]==com||board[I+2][J]==pla) return true;
+			else if(board[I+2][J+1]==com||board[I+2][J+1]==pla) return true;
+			else if(board[I+2][J+2]==com||board[I+2][J+2]==pla) return true;
+			else if(board[I+2][J-1]==com||board[I+2][J-1]==pla) return true;
+			else if(board[I+2][J-2]==com||board[I+2][J-2]==pla) return true;
+			
+			else if(board[I-1][J]==com||board[I-1][J]==pla) return true;
+			else if(board[I-1][J+1]==com||board[I-1][J+1]==pla) return true;
+			else if(board[I-1][J+2]==com||board[I-1][J+2]==pla) return true;
+			else if(board[I-1][J-1]==com||board[I-1][J-1]==pla) return true;
+			else if(board[I-1][J-2]==com||board[I-1][J-2]==pla) return true;
+			
+			else if(board[I-2][J]==com||board[I-2][J]==pla) return true;
+			else if(board[I-2][J+1]==com||board[I-2][J+1]==pla) return true;
+			else if(board[I-2][J+2]==com||board[I-2][J+2]==pla) return true;
+			else if(board[I-2][J-1]==com||board[I-2][J-1]==pla) return true;
+			else if(board[I-2][J-2]==com||board[I-2][J-2]==pla) return true;
+			
+			else{
+				return false;
+			}
+	
+	
+}
 
   
 //判是否有人獲勝  
@@ -461,12 +499,27 @@ void Gobang::think(int com,int pla){
 }     
 
 
+/*
+
+void Gobang::countall(int com,int pla){
+	
+	 for(int k=0;k<15;k++)  
+            for(int n=0;n<15;j++){  
+                    comresults[k][n]=0;  
+                    humresults[k][n]=0;}                //每次先置零   
+       max_com=0;max_hum=0;max_com_i=0;  
+       max_com_j=0;max_hum_i=0;max_hum_j=0;  
+	
+	for(int i=0;i<15;i++){
+		for(int j=0;j<15;j++){
+			 if(!generator(com,pla,i+1,j+1)) continue;
+		}
+	}
+	
+}
 
 
-
-
-
-
+*/
 
 
 
@@ -567,8 +620,10 @@ void Gobang::r_four(int com,int pla){
          for(int j=1;j<14;j++){  
                    
                  if(board[i+1][j+1]>0) continue;  
-                   
-                   
+                
+                 if(!generator(com,pla,i+1,j+1)) continue;
+				 
+			
                  //第一种情?    xooo@x  
                    
                  if(board[i+1][j+2]<0&&board[i+1][j]==com&&board[i+1][j-1]==com&&board[i+1][j-2]==com&&board[i+1][j-3]<0) comresults[i][j]+=100;  
@@ -826,7 +881,8 @@ void Gobang::r_three(int com,int pla){
          for(int j=1;j<14;j++){  
                    
                  if(board[i+1][j+1]>0) continue;  
-                   
+                 
+                 if(!generator(com,pla,i+1,j+1)) continue;
                  //第一种情?    x@oox  
                    
                  if(board[i+1][j]<0&&board[i+1][j+2]==com&&board[i+1][j+3]==com&&board[i+1][j+4]<0) comresults[i][j]+=10;  
@@ -956,7 +1012,8 @@ void Gobang::r_two(int com,int pla){
             for(int j=1;j<14;j++){  
                       
                     if(board[i+1][j+1]>0) continue;  
-                      
+                    
+                    if(!generator(com,pla,i+1,j+1)) continue;
                     //第一种情?  xx@oxx  
                       
                     if(board[i+1][j-1]<0&&board[i+1][j]<0&&board[i+1][j+2]==com&&board[i+1][j+3]<0&&board[i+1][j+4]<0) comresults[i][j]+=2;  
