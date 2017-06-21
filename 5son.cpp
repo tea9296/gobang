@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
-#include "countall.h"
 using namespace std; 
 /*short board[17][17]; 
 bool endtry; 
@@ -438,14 +437,6 @@ void Gobang::getsix(int i,int j){
 
 
 
-
-
-
-
-
-
-
-
                         
 //電腦思考   
 void Gobang::think(int com,int pla){  
@@ -508,6 +499,8 @@ void Gobang::think(int com,int pla){
 }     
 
 
+/*
+
 void Gobang::countall(int com,int pla){
 	
 	 for(int k=0;k<15;k++)  
@@ -520,255 +513,20 @@ void Gobang::countall(int com,int pla){
 	for(int i=0;i<15;i++){
 		for(int j=0;j<15;j++){
 			 if(!generator(com,pla,i+1,j+1)) continue;
-			  board[i+1][j+1]=com;
-			for(int m=0;m<15;m++){
-				for(int n=0;n<15;n++){
-					if(board[m+1][n+1]<0) continue;
-			 		a_four(com,pla,m+1,n+1,i,j);  
-       		 		a_three(com,pla,m+1,n+1,i,j);  
-             		a_two(com,pla,m+1,n+1,i,j);  
-             		a_blocktow(com,pla,m+1,n+1,i,j);
-             		a_one(com,pla,m+1,n+1,i,j);
-             		a_blockone(com,pla,m+1,n+1,i,j);
-             		
-				}   //for n
-			}    //for  m
-			 
-			 
-		
-		
-		}   // for j
-	}    //for i
+		}
+	}
 	
 }
 
 
-void Gobang::a_four(int com,int pla,int m,int n,int i,int j){  
+*/
 
 
 
-}
-
-
-void Gobang::a_three(int com,int pla,int m,int n,int i,int j){  
 
 
 
-}
-
-void Gobang::a_two(int com,int pla,int m,int n,int i,int j){  
-		//第一種情形   xx@oxx   
-		if(board[m+1][n+1]==com){			
-		           
-                    
-                    //  xx@oxx
-                    if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]==com&&board[m+2][n]<0&&board[m+3][n]<0) comresults[i][j]+=50;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]==com&&board[m][n+2]<0&&board[m][n+3]<0) comresults[i][j]+=50;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]==com&&board[m+2][n+2]<0&&board[m+3][n+3]<0) comresults[i][j]+=50;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]==com&&board[m+2][n-2]<0&&board[m+3][n-3]<0) comresults[i][j]+=50;
-                   
-                   
-                   //  xxo@xx
-                     if(board[m-3][n]<0&&board[m-2][n]<0&&board[m-1][n]==com&&board[m+1][n]<0&&board[m+2][n]<0) comresults[i][j]+=50;
-                   if(board[m][n-3]<0&&board[m][n-2]<0&&board[m][n-1]==com&&board[m][n+1]<0&&board[m][n+2]<0) comresults[i][j]+=50;
-                   if(board[m-3][n-3]&&board[m-2][n-2]<0&&board[m-1][n-1]==com&&board[m+1][n+1]<0&&board[m+2][n+2]<0) comresults[i][j]+=50;
-                   if(board[m-3][n+3]&&board[m-2][n+2]<0&&board[m-1][n+1]==com&&board[m+1][n-1]<0&&board[m+2][n-2]<0) comresults[i][j]+=50;
-                    
-                    
-     }
-     if(board[m+1][n+1]==pla){
-                     //  xx@oxx
-                    if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]==pla&&board[m+2][n]<0&&board[m+3][n]<0) humresults[i][j]+=50;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]==pla&&board[m][n+2]<0&&board[m][n+3]<0) humresults[i][j]+=50;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]==pla&&board[m+2][n+2]<0&&board[m+3][n+3]<0) humresults[i][j]+=50;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]==pla&&board[m+2][n-2]<0&&board[m+3][n-3]<0) humresults[i][j]+=50;
-                   
-                   
-                   //  xxo@xx
-                   if(board[m-3][n]<0&&board[m-2][n]<0&&board[m-1][n]==pla&&board[m+1][n]<0&&board[m+2][n]<0) humresults[i][j]+=50;
-                   if(board[m][n-3]<0&&board[m][n-2]<0&&board[m][n-1]==pla&&board[m][n+1]<0&&board[m][n+2]<0) humresults[i][j]+=50;
-                   if(board[m-3][n-3]&&board[m-2][n-2]<0&&board[m-1][n-1]==pla&&board[m+1][n+1]<0&&board[m+2][n+2]<0) humresults[i][j]+=50;
-                   if(board[m-3][n+3]&&board[m-2][n+2]<0&&board[m-1][n+1]==pla&&board[m+1][n-1]<0&&board[m+2][n-2]<0) humresults[i][j]+=50;
-         }
-         
-         
-         
-                    //第二种情?   xx@xox   
-    if(board[m+1][n+1]==com){
-                 
-                    
-                     //  xx@xox
-                    if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]<0&&board[m+2][n]==com&&board[m+3][n]<0) comresults[i][j]+=5;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]<0&&board[m][n+2]==com&&board[m][n+3]<0) comresults[i][j]+=5;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]<0&&board[m+2][n+2]==com&&board[m+3][n+3]<0) comresults[i][j]+=5;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]<0&&board[m+2][n-2]==com&&board[m+3][n-3]<0) comresults[i][j]+=5;
-                   
-                   
-                   //  xox@xx
-                     if(board[m-3][n]<0&&board[m-2][n]==com&&board[m-1][n]<0&&board[m+1][n]<0&&board[m+2][n]<0) comresults[i][j]+=5;
-                   if(board[m][n-3]<0&&board[m][n-2]==com&&board[m][n-1]<0&&board[m][n+1]<0&&board[m][n+2]<0) comresults[i][j]+=5;
-                   if(board[m-3][n-3]&&board[m-2][n-2]==com&&board[m-1][n-1]<0&&board[m+1][n+1]<0&&board[m+2][n+2]<0) comresults[i][j]+=5;
-                   if(board[m-3][n+3]&&board[m-2][n+2]==com&&board[m-1][n+1]<0&&board[m+1][n-1]<0&&board[m+2][n-2]<0) comresults[i][j]+=5;
-                   
-                   
-         }
-         if(board[m+1][n+1]==pla){
-                      //  xx@xox
-                    if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]<0&&board[m+2][n]==pla&&board[m+3][n]<0) humresults[i][j]+=5;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]<0&&board[m][n+2]==pla&&board[m][n+3]<0) humresults[i][j]+=5;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]<0&&board[m+2][n+2]==pla&&board[m+3][n+3]<0) humresults[i][j]+=5;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]<0&&board[m+2][n-2]==pla&&board[m+3][n-3]<0) humresults[i][j]+=5;
-                   
-                   
-                   //  xox@xx
-                     if(board[m-3][n]<0&&board[m-2][n]==pla&&board[m-1][n]<0&&board[m+1][n]<0&&board[m+2][n]<0) humresults[i][j]+=5;
-                   if(board[m][n-3]<0&&board[m][n-2]==pla&&board[m][n-1]<0&&board[m][n+1]<0&&board[m][n+2]<0) humresults[i][j]+=5;
-                   if(board[m-3][n-3]&&board[m-2][n-2]==pla&&board[m-1][n-1]<0&&board[m+1][n+1]<0&&board[m+2][n+2]<0) humresults[i][j]+=5;
-                   if(board[m-3][n+3]&&board[m-2][n+2]==pla&&board[m-1][n+1]<0&&board[m+1][n-1]<0&&board[m+2][n-2]<0) humresults[i][j]+=5;
-                      
-                    }  
   
-
-
-}
-
-void Gobang::a_blocktwo(int com,int pla,int m,int n,int i,int j){  
-		
-		
-			//第一種情形   xx@o*x   
-		if(board[m+1][n+1]==com){			
-		             //  xx@o*
-                    if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]==com&&board[m+2][n]==pla) comresults[i][j]+=5;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]==com&&board[m][n+2]==pla) comresults[i][j]+=5;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]==com&&board[m+2][n+2]==pla) comresults[i][j]+=5;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]==com&&board[m+2][n-2]==pla) comresults[i][j]+=5;
-                   
-                   
-                   //  *o@xx
-                     if(board[m-2][n]==pla&&board[m-1][n]==com&&board[m+1][n]<0&&board[m+2][n]<0) comresults[i][j]+=5;
-                   if(board[m][n-2]==pla&&board[m][n-1]==com&&board[m][n+1]<0&&board[m][n+2]<0) comresults[i][j]+=5;
-                   if(board[m-2][n-2]==pla&&board[m-1][n-1]==com&&board[m+1][n+1]<0&&board[m+2][n+2]<0) comresults[i][j]+=5;
-                   if(board[m-2][n+2]==pla&&board[m-1][n+1]==com&&board[m+1][n-1]<0&&board[m+2][n-2]<0) comresults[i][j]+=5;
-     }
-        if(board[m+1][n+1]==pla){
-                     //  xx@o*
-                    if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]==pla&&board[m+2][n]==com) humresults[i][j]+=5;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]==pla&&board[m][n+2]==com) humresults[i][j]+=5;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]==pla&&board[m+2][n+2]==com) humresults[i][j]+=5;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]==pla&&board[m+2][n-2]==com) humresults[i][j]+=5;
-                   
-                   
-                   //  *o@xx
-                     if(board[m-2][n]==com&&board[m-1][n]==pla&&board[m+1][n]<0&&board[m+2][n]<0) humresults[i][j]+=5;
-                   if(board[m][n-2]==com&&board[m][n-1]==pla&&board[m][n+1]<0&&board[m][n+2]<0) humresults[i][j]+=5;
-                   if(board[m-2][n-2]==com&&board[m-1][n-1]==pla&&board[m+1][n+1]<0&&board[m+2][n+2]<0) humresults[i][j]+=5;
-                   if(board[m-2][n+2]==com&&board[m-1][n+1]==pla&&board[m+1][n-1]<0&&board[m+2][n-2]<0) humresults[i][j]+=5;
-         }
-		
-
-
-
-	//第二種情形   xxo@*x   
-		if(board[m+1][n+1]==com){			
-		              //  xxo@*
-                    if(board[m-3][n]<0&&board[m-2][n]<0&&board[m-1][n]==com&&board[m+1][n]==pla) comresults[i][j]+=5;
-                   if(board[m][n-3]<0&&board[m][n-2]<0&&board[m][n-1]==com&&board[m][n+1]==pla) comresults[i][j]+=5;
-                   if(board[m-3][n-3]<0&&board[m-2][n-2]<0&&board[m-1][n-1]==com&&board[m+1][n+1]==pla) comresults[i][j]+=5;
-                   if(board[m-3][n+3]<0&&board[m-2][n+2]<0&&board[m-1][n+1]==com&&board[m+1][n-1]==pla) comresults[i][j]+=5;
-                   
-                   
-                   //  *@oxx
-                     if(board[m-1][n]==pla&&board[m+1][n]==com&&board[m+2][n]<0&&board[m+3][n]<0) comresults[i][j]+=5;
-                   if(board[m][n-1]==pla&&board[m][n+1]==com&&board[m][n+2]<0&&board[m][n+3]<0) comresults[i][j]+=5;
-                   if(board[m-1][n-1]==pla&&board[m+1][n+1]==com&&board[m+2][n+2]<0&&board[m+3][n+3]<0) comresults[i][j]+=5;
-                   if(board[m-1][n+1]==pla&&board[m+1][n-1]==com&&board[m+2][n-2]<0&&board[m+3][n-3]<0) comresults[i][j]+=5;
-                   
-                   
-     }
-        if(board[m+1][n+1]==pla){
-                      //  xxo@*
-                    if(board[m-3][n]<0&&board[m-2][n]<0&&board[m-1][n]==pla&&board[m+1][n]==com) comresults[i][j]+=5;
-                   if(board[m][n-3]<0&&board[m][n-2]<0&&board[m][n-1]==pla&&board[m][n+1]==com) comresults[i][j]+=5;
-                   if(board[m-3][n-3]<0&&board[m-2][n-2]<0&&board[m-1][n-1]==pla&&board[m+1][n+1]==com) comresults[i][j]+=5;
-                   if(board[m-3][n+3]<0&&board[m-2][n+2]<0&&board[m-1][n+1]==pla&&board[m+1][n-1]==com) comresults[i][j]+=5;
-                   
-                   
-                   //  *@oxx
-                     if(board[m-1][n]==com&&board[m+1][n]==pla&&board[m+2][n]<0&&board[m+3][n]<0) comresults[i][j]+=5;
-                   if(board[m][n-1]==com&&board[m][n+1]==pla&&board[m][n+2]<0&&board[m][n+3]<0) comresults[i][j]+=5;
-                   if(board[m-1][n-1]==com&&board[m+1][n+1]==pla&&board[m+2][n+2]<0&&board[m+3][n+3]<0) comresults[i][j]+=5;
-                   if(board[m-1][n+1]==com&&board[m+1][n-1]==pla&&board[m+2][n-2]<0&&board[m+3][n-3]<0) comresults[i][j]+=5;
-                   
-         }
-
-
-}
-
-
-void Gobang::a_one(int com,int pla,int m,int n,int i,int j){  
- 				
-				 
-				 //第一種 
- if(board[m+1][n+1]==com){
-				//		xx@xx
-                   if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]<0&&board[m+2][n]<0) comresults[i][j]+=10;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]<0&&board[m][n+2]<0) comresults[i][j]+=10;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]<0&&board[m+2][n+2]<0) comresults[i][j]+=10;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]<0&&board[m+2][n-2]<0) comresults[i][j]+=10;
-                  
-                
-                   
-                      
-                      
-                  }
- else if(board[m+1][n+1]==pla){
-                  	
-				  if(board[m-2][n]<0&&board[m-1][n]<0&&board[m+1][n]<0&&board[m+2][n]<0) humresults[i][j]+=10;
-                   if(board[m][n-2]<0&&board[m][n-1]<0&&board[m][n+1]<0&&board[m][n+2]<0) humresults[i][j]+=10;
-                   if(board[m-2][n-2]<0&&board[m-1][n-1]<0&&board[m+1][n+1]<0&&board[m+2][n+2]<0) humresults[i][j]+=10;
-                   if(board[m-2][n+2]<0&&board[m-1][n+1]<0&&board[m+1][n-1]<0&&board[m+2][n-2]<0) humresults[i][j]+=10;
-
-  }
-}
-
-void Gobang::a_blockone(int com,int pla,int m,int n,int i,int j){
-	
-	 //一种情  x*@xx  
-                    if(board[m+1][n+1]==com){
-					
-                   if(board[m+1][n]==pla&&board[m-1][n]<0&&board[m-2][n]<0) comresults[i][j]+=1;
-                   if(board[m-1][n]==pla&&board[m+1][n]<0&&board[m+2][n]<0) comresults[i][j]+=1;
-                   if(board[m][n+1]==pla&&board[m][n-1]<0&&board[m][n-2]<0) comresults[i][j]+=1;
-                   if(board[m][n-1]==pla&&board[m][n+1]<0&&board[m][n+2]<0) comresults[i][j]+=1;
-                   if(board[m+1][n+1]==pla&&board[m-1][n-1]<0&&board[m-2][n-2]<0) comresults[i][j]+=1;
-                   if(board[m-1][n-1]==pla&&board[m+1][n+1]<0&&board[m+2][n+2]<0) comresults[i][j]+=1;
-                   if(board[m-1][n+1]==pla&&board[m+1][n-1]<0&&board[m+2][n-2]<0) comresults[i][j]+=1;
-                   if(board[m+1][n-1]==pla&&board[m-1][n+1]<0&&board[m-2][n+2]<0) comresults[i][j]+=1;
-                
-                   
-                      
-                      
-                  }
-                  else if(board[m+1][n+1]==pla){
-                  	
-				  if(board[m+1][n]==com&&board[m-1][n]<0&&board[m-2][n]<0) humresults[i][j]+=1;
-                   if(board[m-1][n]==com&&board[m+1][n]<0&&board[m+2][n]<0) humresults[i][j]+=1;
-                   if(board[m][n+1]==com&&board[m][n-1]<0&&board[m][n-2]<0) humresults[i][j]+=1;
-                   if(board[m][n-1]==com&&board[m][n+1]<0&&board[m][n+2]<0) humresults[i][j]+=1;
-                   if(board[m+1][n+1]==com&&board[m-1][n-1]<0&&board[m-2][n-2]<0) humresults[i][j]+=1;
-                   if(board[m-1][n-1]==com&&board[m+1][n+1]<0&&board[m+2][n+2]<0) humresults[i][j]+=1;
-                   if(board[m-1][n+1]==com&&board[m+1][n-1]<0&&board[m+2][n-2]<0) humresults[i][j]+=1;
-                   if(board[m+1][n-1]==com&&board[m-1][n+1]<0&&board[m-2][n+2]<0) humresults[i][j]+=1;
-					
-				}
-	
-}
-
-
-
-
-
-
 void Gobang::getresults(int com,int pla){  
        
           for(int i=0;i<15;i++)  
